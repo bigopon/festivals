@@ -26,7 +26,7 @@ export const groupByRecordLabel = (data: MusicFestival[]) => {
       if (!recordLabel) {
         // imaginary logger here
         // warning: missing company name // maybe distinguish between empty string vs undefined?
-        recordLabel = 'No record label';
+        recordLabel = '';
       }
       const companyRecords = grouped[recordLabel] ??= {};
       const bandFestivalRecords = companyRecords[bandName] ??= [];
@@ -36,6 +36,11 @@ export const groupByRecordLabel = (data: MusicFestival[]) => {
 
     return grouped;
   }, {});
+  
+  const sorted = Object.keys(grouped).sort().reduce((sorted: GroupedByRecordLabel, name) => {
+    sorted[name] = grouped[name];
+    return sorted;
+  }, {})
 
-  return grouped;
+  return sorted;
 }

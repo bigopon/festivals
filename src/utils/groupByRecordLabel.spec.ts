@@ -86,8 +86,27 @@ describe('groupByRecordLabel', () => {
     const output = groupByRecordLabel(mockData);
 
     expect(output).toEqual({
-      'No record label': {
+      '': {
         'band_1': ['fes1', 'fes2']
+      }
+    });
+  });
+
+  it('sorts by company name alphabetically while grouping', () => {
+    const mockData: MusicFestival[] = [
+      { name: 'fes1', bands: [
+        { name: 'band_1', recordLabel: 'b_comp' },
+        { name: 'band_1', recordLabel: 'a_comp' },
+      ]},
+    ];
+    const output = groupByRecordLabel(mockData);
+
+    expect(output).toEqual({
+      'a_comp': {
+        'band_1': ['fes1']
+      },
+      'b_comp': {
+        'band_1': ['fes1']
       }
     });
   });
