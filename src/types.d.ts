@@ -1,9 +1,9 @@
 export interface MusicFestival {
   name: string;
-  bands: Band[];
+  bands: FestivalBandRecord[];
 }
 
-export interface Band {
+export interface FestivalBandRecord {
   name: string;
   recordLabel: string;
 }
