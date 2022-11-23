@@ -32,7 +32,7 @@ export const groupByRecordLabel = (data: MusicFestival[]) => {
 
     return grouped;
   }, {});
-  
+
   const sorted = Object.keys(grouped).sort().reduce((sorted: GroupedByRecordLabel, name) => {
     sorted[name] = grouped[name];
     return sorted;

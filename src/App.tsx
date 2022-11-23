@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { RecordListing } from './components/RecordListing';
 import { useFetchFestival } from './hooks/useFetchFestivals'
 import { groupByRecordLabel } from './utils/groupByRecordLabel';
 
 function App() {
-  const [count, setCount] = useState(0)
   const { isLoading, isError, data } = useFetchFestival();
 
   if (typeof data?.map !== 'function') {
@@ -12,15 +10,17 @@ function App() {
   }
 
   const groupedData = groupByRecordLabel(data ?? []);
-  console.log(groupedData);
-
-  // todo:
-  // - group band by record label name
-  // - sort alphabetically
+  
+  if (isError) {
+    return <>Error loading data. todo</>
+  }
 
   return (
     <div className="App">
-      <RecordListing record={groupedData} />
+      {isLoading
+        ? <>...loading</>
+        : <RecordListing record={groupedData} />
+      }
     </div>
   )
 }

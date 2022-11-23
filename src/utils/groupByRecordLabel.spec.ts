@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest'
 import { groupByRecordLabel } from './groupByRecordLabel';
-import festivals from '../../festivals.json';
 import { MusicFestival } from '../types';
 
 describe('groupByRecordLabel', () => {
