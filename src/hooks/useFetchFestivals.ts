@@ -1,14 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-
-export interface MusicFestival {
-  name: string;
-  bands: Band[]
-}
-
-export interface Band {
-  name: string;
-  recordLabel: string;
-}
+import { MusicFestival } from "../types";
 
 export const useFetchFestival = () => {
   return useQuery({

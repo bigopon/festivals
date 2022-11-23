@@ -5,7 +5,13 @@ function App() {
   const [count, setCount] = useState(0)
   const { isLoading, isError, data } = useFetchFestival();
 
-  console.log(data);
+  if (typeof data?.map !== 'function') {
+    console.log(data);
+  }
+
+  // todo:
+  // - group band by record label name
+  // - sort alphabetically
 
   return (
     <div className="App">
@@ -19,3 +25,4 @@ function App() {
 }
 
 export default App
+
