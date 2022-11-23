@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RecordListing } from './components/RecordListing';
 import { useFetchFestival } from './hooks/useFetchFestivals'
 import { groupByRecordLabel } from './utils/groupByRecordLabel';
 
@@ -19,11 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
-        {data?.map((festival, i) => <li key={`${festival.name}-${i}`}>
-          {festival.bands.map(b => b.name).join(', ')}
-        </li>)}
-      </ul>
+      <RecordListing record={groupedData} />
     </div>
   )
 }

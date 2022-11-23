@@ -1,4 +1,4 @@
-import { MusicFestival } from "../types";
+import { GroupedByRecordLabel, MusicFestival } from "../types";
 
 /* 
   example grouped data:
@@ -8,10 +8,6 @@ import { MusicFestival } from "../types";
     }
   }
  */
-
-export type GroupedByRecordLabel = Record<string, BandFestivalAttendance>;
-
-export type BandFestivalAttendance = Record<string, string[]>
 
 export const groupByRecordLabel = (data: MusicFestival[]) => {
   const grouped = data.reduce((grouped: GroupedByRecordLabel, festival) => {
