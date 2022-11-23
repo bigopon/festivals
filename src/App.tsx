@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useFetchFestival } from './hooks/useFetchFestivals'
+import { groupByRecordLabel } from './utils/groupByRecordLabel';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,6 +9,9 @@ function App() {
   if (typeof data?.map !== 'function') {
     console.log(data);
   }
+
+  const groupedData = groupByRecordLabel(data ?? []);
+  console.log(groupedData);
 
   // todo:
   // - group band by record label name

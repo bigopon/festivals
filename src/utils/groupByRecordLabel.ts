@@ -16,7 +16,18 @@ export type BandFestivalAttendance = Record<string, string[]>
 export const groupByRecordLabel = (data: MusicFestival[]) => {
   const grouped = data.reduce((grouped: GroupedByRecordLabel, festival) => {
 
+    if (!festival.name) {
+      // imaginary logger here
+      // Err: missing festival name
+      return grouped;
+    }
+
     festival.bands.forEach(({ recordLabel, name: bandName }) => {
+      if (!recordLabel) {
+        // imaginary logger here
+        // warning: missing company name // maybe distinguish between empty string vs undefined?
+        recordLabel = 'No record label';
+      }
       const companyRecords = grouped[recordLabel] ??= {};
       const bandFestivalRecords = companyRecords[bandName] ??= [];
 
